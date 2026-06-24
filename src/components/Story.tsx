@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { story } from "../data/site";
+import { images, story } from "../data/site";
 import { gsap, useGSAP } from "../lib/gsap";
 import { Eyebrow } from "./ui/Eyebrow";
 import { ArtPanel } from "./ui/ArtPanel";
@@ -102,26 +102,28 @@ export function Story() {
 
         {/* Image / art column */}
         <div className="story-art relative">
-          <ArtPanel
-            tone="sage"
-            className="arch-top relative aspect-[4/5] w-full rounded-b-[1.5rem] shadow-xl"
-          >
-            {/* slight overscan layer for parallax */}
-            <div className="story-art-inner absolute inset-0 scale-110" />
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+          <div className="arch-top relative aspect-[4/5] w-full overflow-hidden rounded-b-[1.5rem] shadow-xl">
+            <div className="story-art-inner absolute inset-0 scale-[1.2]">
+              <ArtPanel
+                tone="sage"
+                image={images.story}
+                className="h-full w-full"
+              />
+            </div>
+            <div className="absolute bottom-5 left-5 right-5 z-10 flex items-end justify-between">
               <span className="font-display text-2xl italic text-bone">
                 The dining room
               </span>
               <span className="rounded-full bg-bone/15 px-3 py-1 text-[0.66rem] uppercase tracking-[0.2em] text-bone backdrop-blur-sm">
-                Boho luxe
+                Warm &amp; low-lit
               </span>
             </div>
-          </ArtPanel>
+          </div>
 
           {/* floating chip */}
           <div
             data-reveal
-            className="absolute -left-4 -top-4 rounded-2xl bg-bone px-5 py-4 shadow-lg ring-1 ring-espresso/5 md:-left-8"
+            className="absolute -left-4 -top-4 z-10 rounded-2xl bg-bone px-5 py-4 shadow-lg ring-1 ring-espresso/5 md:-left-8"
           >
             <p className="font-display text-xl text-forest">Est. in Lagos</p>
             <p className="text-[0.72rem] uppercase tracking-[0.18em] text-clay">

@@ -81,7 +81,6 @@ export function Navbar() {
             aria-label="Lala's Bistro — back to top"
           >
             Lala's
-            <span className="ml-1 not-italic text-clay">·</span>
           </button>
 
           <ul className="hidden items-center gap-9 text-[0.82rem] font-medium text-espresso/80 md:flex">

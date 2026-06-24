@@ -3,8 +3,9 @@
 A modern, art-directed marketing site for **Lala's Bistro**, the boho-chic resto-bar
 tucked inside the Lala's Lagos boutique hotel in Victoria Island, Lagos.
 
-This is a ground-up redesign concept built to feel warm, editorial and unmistakably
-"boho luxe" — deep greenery, terracotta, candlelight and slow Lagos afternoons.
+This is a ground-up redesign concept built to feel mature, editorial and upscale —
+a refined palette of charcoal, ivory, brass and bordeaux, candlelight and slow
+Lagos evenings.
 
 ## Tech stack
 
@@ -16,13 +17,13 @@ This is a ground-up redesign concept built to feel warm, editorial and unmistaka
 
 ## Design language
 
-| Token        | Value     | Use                            |
-| ------------ | --------- | ------------------------------ |
-| Bone         | `#F3EAD9` | Page background (warm cream)    |
-| Forest       | `#2C362C` | Deep greenery / dark sections   |
-| Clay         | `#C0694A` | Terracotta accent               |
-| Ochre        | `#C9A24B` | Gold highlights                 |
-| Espresso     | `#241B12` | Primary text                    |
+| Token    | Value     | Use                          |
+| -------- | --------- | ---------------------------- |
+| Bone     | `#EFE9DD` | Page background (ivory)       |
+| Forest   | `#242019` | Charcoal / dark sections      |
+| Clay     | `#7C403B` | Bordeaux accent (primary)     |
+| Ochre    | `#B0894F` | Brass highlights (secondary)  |
+| Espresso | `#211C15` | Primary text                  |
 
 Type pairing: **Fraunces** (display serif) + **Inter** (UI sans).
 
@@ -54,11 +55,14 @@ src/
 All copy, menu items, prices, hours and contact details live in
 [`src/data/site.ts`](src/data/site.ts) — edit there to update the site.
 
-The visuals are intentionally **self-contained** (CSS gradients + SVG art direction,
-film grain, botanical line-art) so the site looks cohesive with zero external image
-dependencies. To use real photography, each art-directed panel accepts an optional
-image; drop URLs into the `image` fields in `site.ts` and they'll render in place of
-the gradient art.
+The site uses **real photography** (Unsplash CDN) for the hero, story, signatures,
+patio and visit panels. The image URLs are defined in the `images` object and the
+`signatures` list in `site.ts` — swap the Unsplash ids (or paste full URLs) for the
+venue's own photos.
+
+Every `ArtPanel` keeps a matured gradient composition (grain + vignette) underneath
+the photo as a **graceful fallback**: if an image is missing or blocked, the panel
+shows the gradient instead of a broken-image icon — so the layout never breaks.
 
 > Menu items and prices are representative of Lala's Bistro's real offering and the
 > published ₦ price bands; confirm exact figures with the restaurant before going live.

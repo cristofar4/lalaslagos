@@ -28,11 +28,22 @@ export interface Dish {
   image?: string;
 }
 
+/** Build an Unsplash CDN url. Swap these ids for the venue's own photos. */
+const img = (id: string, w = 1200) =>
+  `https://images.unsplash.com/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
+
+export const images = {
+  hero: img("1504674900247-0877df9cc836", 1500),
+  story: img("1517248135467-4c7edcad34c4", 1200),
+  patio: img("1559339352-11d035aa65de", 1700),
+  map: img("1555396273-367ea4eb4db5", 1100),
+};
+
 export const site = {
   name: "Lala's Bistro",
   shortName: "Lala's",
   tagline: "Boho-chic resto-bar",
-  location: "Victoria Island · Lagos",
+  location: "Victoria Island, Lagos",
   phone: "+234 915 025 1251",
   phoneHref: "tel:+2349150251251",
   email: "hello@lalaslagos.com",
@@ -59,7 +70,7 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  eyebrow: "Victoria Island · Lagos",
+  eyebrow: "Victoria Island, Lagos",
   // Each line animates in independently.
   lines: ["Lala's", "Bistro"],
   lead:
@@ -213,24 +224,28 @@ export const signatures: Dish[] = [
     kicker: "From the sea",
     desc: "Citrus butter, seasonal greens, crushed new potato.",
     tone: "forest",
+    image: img("1414235077428-338989a2e8c0", 900),
   },
   {
     name: "Smoky Jollof",
     kicker: "From Lagos",
     desc: "Party jollof, suya-spiced chicken, sweet plantain.",
     tone: "clay",
+    image: img("1546069901-ba9599a7e63c", 900),
   },
   {
     name: "Lala's Cinnamon Roll",
     kicker: "From the oven",
     desc: "Warm, pull-apart, cream-cheese glaze.",
     tone: "ochre",
+    image: img("1466978913421-dad2ebd01d17", 900),
   },
   {
     name: "Hibiscus Spritz",
     kicker: "From the bar",
     desc: "Zobo, prosecco, citrus and a sprig of mint.",
     tone: "dusk",
+    image: img("1424847651672-bf20a4b0982b", 900),
   },
 ];
 

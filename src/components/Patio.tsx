@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { patio } from "../data/site";
+import { images, patio } from "../data/site";
 import { gsap, useGSAP } from "../lib/gsap";
 import { Eyebrow } from "./ui/Eyebrow";
 import { ArtPanel } from "./ui/ArtPanel";
@@ -52,6 +52,8 @@ export function Patio() {
       <ArtPanel
         tone="dusk"
         sprig={false}
+        image={images.patio}
+        overlay={false}
         className="patio-bg absolute inset-0 -z-10 scale-110"
       />
       {/* darkening for legibility */}

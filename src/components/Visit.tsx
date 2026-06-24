@@ -1,4 +1,4 @@
-import { hours, site, visit } from "../data/site";
+import { hours, images, site, visit } from "../data/site";
 import { Eyebrow } from "./ui/Eyebrow";
 import { ArtPanel } from "./ui/ArtPanel";
 import { MagneticButton } from "./ui/MagneticButton";
@@ -96,8 +96,11 @@ export function Visit() {
           <a href={site.mapHref} className="group block">
             <ArtPanel
               tone="sage"
+              image={images.map}
+              overlay={false}
               className="relative h-56 rounded-3xl ring-1 ring-espresso/5"
             >
+              <div className="absolute inset-0 bg-forest-deep/55" />
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-bone">
                 <svg
                   viewBox="0 0 24 24"

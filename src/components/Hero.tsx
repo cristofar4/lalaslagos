@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { hero, site } from "../data/site";
+import { hero, images, site } from "../data/site";
 import { gsap, useGSAP, ScrollTrigger } from "../lib/gsap";
 import { scrollToSection } from "../lib/smoothScroll";
 import { Eyebrow } from "./ui/Eyebrow";
@@ -83,14 +83,15 @@ export function Hero({ start }: { start: boolean }) {
         className="absolute inset-0 -z-10"
         style={{
           backgroundImage:
-            "radial-gradient(80% 60% at 75% 12%, rgba(201,162,75,0.20) 0%, transparent 60%), radial-gradient(70% 60% at 10% 90%, rgba(154,165,137,0.22) 0%, transparent 55%), linear-gradient(180deg, #f3ead9 0%, #efe4cf 100%)",
+            "radial-gradient(80% 60% at 75% 12%, rgba(176,137,79,0.18) 0%, transparent 60%), radial-gradient(70% 60% at 10% 90%, rgba(138,135,115,0.20) 0%, transparent 55%), linear-gradient(180deg, #efe9dd 0%, #e6dfd1 100%)",
         }}
       />
 
       {/* Decorative arch accent */}
       <ArtPanel
         tone="forest"
-        className="h-accent arch-top absolute right-[-6%] top-[14%] -z-[5] hidden h-[62%] w-[34%] rounded-b-[2rem] opacity-95 shadow-2xl md:block"
+        image={images.hero}
+        className="h-accent arch-top absolute right-[-6%] top-[14%] -z-[5] hidden h-[62%] w-[34%] rounded-b-[2rem] shadow-2xl md:block"
       />
       <div className="h-accent absolute left-[6%] top-[30%] -z-[5] hidden h-24 w-24 rounded-full border border-clay/40 md:block" />
 
@@ -145,20 +146,6 @@ export function Hero({ start }: { start: boolean }) {
           </div>
         </div>
       </div>
-
-      {/* Scroll cue */}
-      <button
-        onClick={() => scrollToSection("#story")}
-        className="h-fade group absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-espresso/60"
-        aria-label="Scroll to story"
-      >
-        <span className="text-[0.66rem] uppercase tracking-[0.3em]">Scroll</span>
-        <span className="relative h-10 w-px overflow-hidden bg-espresso/20">
-          <span className="absolute inset-0 -translate-y-full animate-[scrollcue_1.8s_ease-in-out_infinite] bg-clay" />
-        </span>
-      </button>
-
-      <style>{`@keyframes scrollcue{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}`}</style>
     </section>
   );
 }
