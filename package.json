@@ -1,0 +1,29 @@
+{
+  "name": "lalas-bistro",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Lala's Bistro — a boho-chic resto-bar in Victoria Island, Lagos. Marketing site built with React, Tailwind & GSAP.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.1",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.18",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0"
+  }
+}

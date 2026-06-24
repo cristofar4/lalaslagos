@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — Lala's Bistro "boho luxe" palette & type           */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-bone: #f3ead9;
+  --color-bone-soft: #efe4cf;
+  --color-sand: #e7d6ba;
+  --color-blush: #e2c4ac;
+  --color-clay: #c0694a;
+  --color-ember: #a8472b;
+  --color-ochre: #c9a24b;
+  --color-ochre-soft: #d9bd7a;
+  --color-sage: #9aa589;
+  --color-olive: #59634a;
+  --color-forest: #2c362c;
+  --color-forest-deep: #222a22;
+  --color-espresso: #241b12;
+  --color-cocoa: #3a2d20;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-bone);
+    color: var(--color-espresso);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    background-color: var(--color-clay);
+    color: var(--color-bone);
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Lenis smooth scroll (recommended baseline)                         */
+/* ------------------------------------------------------------------ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable pieces                                                    */
+/* ------------------------------------------------------------------ */
+
+/* Eyebrow / kicker label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.5;
+}
+
+/* Buttons */
+.btn {
+  --btn-bg: var(--color-forest);
+  --btn-fg: var(--color-bone);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid transparent;
+  transition:
+    transform 0.5s var(--ease-out-soft),
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+  will-change: transform;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn--clay {
+  --btn-bg: var(--color-clay);
+}
+.btn--ghost {
+  background-color: transparent;
+  color: currentColor;
+  border-color: color-mix(in oklab, currentColor 35%, transparent);
+}
+.btn--ghost:hover {
+  background-color: color-mix(in oklab, currentColor 8%, transparent);
+}
+
+/* Animated link underline */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease-out-soft);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Boho arch (rounded top) */
+.arch-top {
+  border-top-left-radius: 50% 22%;
+  border-top-right-radius: 50% 22%;
+}
+
+/* Container helper */
+.container-x {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .container-x {
+    padding-inline: 3.5rem;
+  }
+}
+
+/* Edge fade for marquees */
+.edge-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+/* Hairline */
+.hairline {
+  border-color: color-mix(in oklab, currentColor 16%, transparent);
+}
+
+/* Display fluid sizes */
+.text-hero {
+  font-size: clamp(3.4rem, 13vw, 12rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.text-section {
+  font-size: clamp(2.2rem, 5.2vw, 4.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
