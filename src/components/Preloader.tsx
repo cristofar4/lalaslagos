@@ -9,11 +9,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
 
   useGSAP(
     () => {
-      const reduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-      if (reduced) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.set(root.current, { display: "none" });
         onComplete();
         return;
@@ -63,10 +59,10 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
   return (
     <div
       ref={root}
-      className="invisible fixed inset-0 z-[100] flex flex-col items-center justify-center bg-forest text-bone"
+      className="invisible fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink text-cream"
     >
-      <div className="pl-fade absolute inset-x-0 top-0 flex justify-between px-6 py-6 text-[0.68rem] uppercase tracking-[0.28em] text-bone/55">
-        <span>Lagos · NG</span>
+      <div className="pl-fade absolute inset-x-0 top-0 flex justify-between px-6 py-6 text-[0.66rem] uppercase tracking-[0.28em] text-stone">
+        <span>Lagos, NG</span>
         <span>Boho-chic</span>
       </div>
 
@@ -78,17 +74,17 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
         ))}
       </h1>
 
-      <p className="pl-sub pl-fade mt-5 text-[0.72rem] uppercase tracking-[0.32em] text-bone/55">
-        Bistro · Victoria Island
+      <p className="pl-sub pl-fade mt-5 text-[0.7rem] uppercase tracking-[0.32em] text-stone">
+        Bistro, Victoria Island
       </p>
 
       <div className="pl-fade absolute inset-x-0 bottom-0 flex items-center justify-between px-6 py-6">
-        <div className="h-px w-40 overflow-hidden bg-bone/15">
-          <div className="pl-bar h-full w-full origin-left scale-x-0 bg-ochre" />
+        <div className="h-px w-40 overflow-hidden bg-cream/15">
+          <div className="pl-bar h-full w-full origin-left scale-x-0 bg-lime" />
         </div>
         <span className="font-display text-lg">
           <span ref={countRef}>00</span>
-          <span className="text-ochre">%</span>
+          <span className="text-lime">%</span>
         </span>
       </div>
     </div>

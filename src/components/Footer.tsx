@@ -5,26 +5,23 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-forest pt-20 text-bone">
+    <footer className="relative overflow-hidden border-t border-line bg-ink-soft pt-20 text-cream">
       <div className="container-x">
-        <div className="grid gap-12 border-b border-bone/12 pb-14 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-12 border-b border-line pb-14 md:grid-cols-[1.4fr_1fr_1fr]">
           {/* Brand */}
           <div>
             <p className="font-display text-4xl italic">Lala's Bistro</p>
-            <p className="mt-4 max-w-xs text-bone/65">
+            <p className="mt-4 max-w-xs text-cream/65">
               A boho-chic resto-bar tucked inside Lala's Lagos. {site.location}.
             </p>
-            <a
-              href={site.phoneHref}
-              className="btn btn--clay mt-7 inline-flex"
-            >
+            <a href={site.phoneHref} className="btn mt-7 inline-flex">
               Reserve a table
             </a>
           </div>
 
           {/* Explore */}
           <div>
-            <p className="text-[0.72rem] uppercase tracking-[0.22em] text-bone/45">
+            <p className="text-[0.72rem] uppercase tracking-[0.22em] text-stone">
               Explore
             </p>
             <ul className="mt-5 space-y-3">
@@ -32,7 +29,7 @@ export function Footer() {
                 <li key={item.target}>
                   <button
                     onClick={() => scrollToSection(item.target)}
-                    className="link-underline text-bone/80 hover:text-bone"
+                    className="link-underline text-cream/80 hover:text-cream"
                   >
                     {item.label}
                   </button>
@@ -43,10 +40,10 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="text-[0.72rem] uppercase tracking-[0.22em] text-bone/45">
+            <p className="text-[0.72rem] uppercase tracking-[0.22em] text-stone">
               Find us
             </p>
-            <address className="mt-5 not-italic leading-relaxed text-bone/80">
+            <address className="mt-5 not-italic leading-relaxed text-cream/80">
               {site.address.line1}
               <br />
               {site.address.line2}
@@ -55,7 +52,7 @@ export function Footer() {
             </address>
             <a
               href={site.phoneHref}
-              className="link-underline mt-4 inline-block text-bone/80"
+              className="link-underline mt-4 inline-block text-cream/80"
             >
               {site.phone}
             </a>
@@ -64,7 +61,7 @@ export function Footer() {
                 <a
                   key={s.handle}
                   href={s.href}
-                  className="link-underline text-bone/70"
+                  className="link-underline text-cream/70"
                 >
                   {s.handle}
                 </a>
@@ -73,7 +70,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 py-7 text-xs text-bone/50 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 py-7 text-xs text-stone sm:flex-row">
           <p>
             © {year} {site.name}. All rights reserved.
           </p>
@@ -87,10 +84,9 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Oversized wordmark */}
       <div
         aria-hidden="true"
-        className="pointer-events-none select-none px-4 text-center font-display text-[24vw] leading-[0.78] text-bone/[0.04]"
+        className="pointer-events-none select-none px-4 text-center font-display text-[24vw] leading-[0.78] text-cream/[0.04]"
       >
         Lala's
       </div>

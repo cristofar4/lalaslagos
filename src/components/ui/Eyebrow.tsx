@@ -4,5 +4,10 @@ export function Eyebrow({
   children,
   className = "",
 }: PropsWithChildren<{ className?: string }>) {
-  return <span className={`eyebrow ${className}`}>{children}</span>;
+  return (
+    <span className={`eyebrow ${className}`}>
+      <span className="dot" />
+      {children}
+    </span>
+  );
 }

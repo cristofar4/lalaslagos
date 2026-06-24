@@ -3,9 +3,8 @@
 A modern, art-directed marketing site for **Lala's Bistro**, the boho-chic resto-bar
 tucked inside the Lala's Lagos boutique hotel in Victoria Island, Lagos.
 
-This is a ground-up redesign concept built to feel mature, editorial and upscale —
-a refined palette of charcoal, ivory, brass and bordeaux, candlelight and slow
-Lagos evenings.
+A bold, dark-canvas "Noir & Lime" concept — near-black throughout, cream type and
+an electric lime accent, built to feel modern and to stand out.
 
 ## Tech stack
 
@@ -17,15 +16,32 @@ Lagos evenings.
 
 ## Design language
 
-| Token    | Value     | Use                          |
-| -------- | --------- | ---------------------------- |
-| Bone     | `#EFE9DD` | Page background (ivory)       |
-| Forest   | `#242019` | Charcoal / dark sections      |
-| Clay     | `#7C403B` | Bordeaux accent (primary)     |
-| Ochre    | `#B0894F` | Brass highlights (secondary)  |
-| Espresso | `#211C15` | Primary text                  |
+| Token | Value     | Use                          |
+| ----- | --------- | ---------------------------- |
+| Ink   | `#0F0F0D` | Page background (near-black)  |
+| Coal  | `#1E1E1A` | Raised panels / cards         |
+| Cream | `#F4F1E9` | Primary text                  |
+| Lime  | `#C9F24D` | Accent (buttons, marks, glow) |
+| Stone | `#9B968A` | Muted / secondary text        |
 
 Type pairing: **Fraunces** (display serif) + **Inter** (UI sans).
+
+## Structure
+
+Restructured into a dark-dominant flow: **Hero → marquee → Manifesto → horizontal
+pinned Signatures showcase → Story → light Menu break → Patio → auto-scroll Gallery
+→ Visit → Footer.**
+
+## GSAP highlights
+
+- Custom trailing **cursor** with `data-cursor` labels (desktop only)
+- Top **scroll-progress** bar
+- Animated **preloader**, masked hero reveal, magnetic CTAs
+- **Pinned horizontal scroll** showcase (`gsap.matchMedia`, desktop) that becomes a
+  snap-scroll carousel on mobile
+- Masked **word-by-word headline** reveals with a lime "marker" accent
+- Clip-path image reveals, parallax, dual marquees, animated stat counters
+- `prefers-reduced-motion` guards throughout
 
 ## Getting started
 
@@ -55,14 +71,14 @@ src/
 All copy, menu items, prices, hours and contact details live in
 [`src/data/site.ts`](src/data/site.ts) — edit there to update the site.
 
-The site uses **real photography** (Unsplash CDN) for the hero, story, signatures,
-patio and visit panels. The image URLs are defined in the `images` object and the
-`signatures` list in `site.ts` — swap the Unsplash ids (or paste full URLs) for the
-venue's own photos.
+The site uses **real photography** (Unsplash CDN) for the hero strip, signatures
+showcase, story, patio, gallery and visit panels. The image URLs live in the
+`images`, `signatures` and `gallery` entries in `site.ts` — swap the Unsplash ids
+(or paste full URLs) for the venue's own photos.
 
-Every `ArtPanel` keeps a matured gradient composition (grain + vignette) underneath
-the photo as a **graceful fallback**: if an image is missing or blocked, the panel
-shows the gradient instead of a broken-image icon — so the layout never breaks.
+Images render through a `SmartImg` / `ArtPanel` **graceful fallback**: if an image is
+missing or blocked, a noir/lime gradient shows instead of a broken-image icon — so
+the layout never breaks.
 
 > Menu items and prices are representative of Lala's Bistro's real offering and the
 > published ₦ price bands; confirm exact figures with the restaurant before going live.

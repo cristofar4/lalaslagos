@@ -62,9 +62,9 @@ export const site = {
 } as const;
 
 export const nav = [
+  { label: "Signatures", target: "#signatures" },
   { label: "Story", target: "#story" },
   { label: "Menu", target: "#menu" },
-  { label: "Signatures", target: "#signatures" },
   { label: "The Patio", target: "#patio" },
   { label: "Visit", target: "#visit" },
 ] as const;
@@ -74,9 +74,28 @@ export const hero = {
   // Each line animates in independently.
   lines: ["Lala's", "Bistro"],
   lead:
-    "A boho-chic resto-bar tucked inside Lala's Lagos — where slow brunches, golden afternoons and candlelit dinners meet across the table.",
+    "A boho-chic resto-bar tucked inside Lala's Lagos. Slow brunches, golden afternoons, candlelit dinners.",
   tags: ["Brunch", "Resto-bar", "Garden Patio"],
 };
+
+export const manifesto = {
+  eyebrow: "The idea",
+  // The word matching `accent` is highlighted in lime.
+  lead: "We cook the way Lagos lives",
+  accent: "Lagos",
+  body: "Unhurried and generous, a little bit golden. One kitchen wandering from the lagoon to the Mediterranean — plating it all by candlelight.",
+};
+
+export const gallery = [
+  img("1414235077428-338989a2e8c0", 800),
+  img("1517248135467-4c7edcad34c4", 800),
+  img("1424847651672-bf20a4b0982b", 800),
+  img("1546069901-ba9599a7e63c", 800),
+  img("1466978913421-dad2ebd01d17", 800),
+  img("1559339352-11d035aa65de", 800),
+  img("1504674900247-0877df9cc836", 800),
+  img("1555396273-367ea4eb4db5", 800),
+];
 
 export const marquee = [
   "Boho Chic",

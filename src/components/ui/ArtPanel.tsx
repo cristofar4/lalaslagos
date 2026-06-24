@@ -11,37 +11,37 @@ import { Sprig } from "./Sprig";
 const tones: Record<Tone, CSSProperties> = {
   forest: {
     backgroundImage: [
-      "radial-gradient(120% 110% at 18% 8%, rgba(138,135,115,0.42) 0%, transparent 52%)",
-      "radial-gradient(120% 120% at 88% 96%, rgba(176,137,79,0.28) 0%, transparent 50%)",
-      "linear-gradient(155deg, #242019 0%, #18150f 100%)",
+      "radial-gradient(120% 110% at 18% 8%, rgba(155,150,138,0.26) 0%, transparent 52%)",
+      "radial-gradient(120% 120% at 86% 95%, rgba(201,242,77,0.16) 0%, transparent 50%)",
+      "linear-gradient(155deg, #1e1e1a 0%, #0f0f0d 100%)",
     ].join(","),
   },
   clay: {
     backgroundImage: [
-      "radial-gradient(120% 110% at 82% 10%, rgba(204,174,126,0.38) 0%, transparent 55%)",
-      "linear-gradient(155deg, #7c403b 0%, #5e302c 100%)",
+      "radial-gradient(120% 110% at 80% 12%, rgba(201,242,77,0.20) 0%, transparent 55%)",
+      "linear-gradient(155deg, #232320 0%, #111110 100%)",
     ].join(","),
   },
   ochre: {
     backgroundImage: [
-      "radial-gradient(110% 110% at 20% 16%, rgba(239,233,221,0.55) 0%, transparent 58%)",
-      "linear-gradient(155deg, #b0894f 0%, #7c5a32 100%)",
+      "radial-gradient(110% 110% at 22% 16%, rgba(201,242,77,0.22) 0%, transparent 58%)",
+      "linear-gradient(155deg, #20201c 0%, #101010 100%)",
     ].join(","),
   },
   sage: {
     backgroundImage: [
-      "radial-gradient(120% 120% at 80% 14%, rgba(239,233,221,0.32) 0%, transparent 55%)",
-      "linear-gradient(155deg, #8a8773 0%, #565040 100%)",
+      "radial-gradient(120% 120% at 80% 14%, rgba(155,150,138,0.24) 0%, transparent 55%)",
+      "linear-gradient(155deg, #1e1e1a 0%, #121210 100%)",
     ].join(","),
   },
   dusk: {
     backgroundImage: [
-      "radial-gradient(120% 90% at 50% 0%, rgba(176,137,79,0.32) 0%, transparent 55%)",
-      "linear-gradient(160deg, #7c403b 0%, #565040 58%, #18150f 100%)",
+      "radial-gradient(120% 90% at 50% 0%, rgba(201,242,77,0.18) 0%, transparent 55%)",
+      "linear-gradient(160deg, #232320 0%, #16160f 58%, #0d0d0b 100%)",
     ].join(","),
   },
   bone: {
-    backgroundImage: "linear-gradient(155deg, #e6dfd1 0%, #d8cdb9 100%)",
+    backgroundImage: "linear-gradient(155deg, #f4f1e9 0%, #e7e2d4 100%)",
   },
 };
 
@@ -67,8 +67,7 @@ export function ArtPanel({
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(image) && !failed;
   const showSprig = sprig ?? (!showImage && (tone === "forest" || tone === "sage"));
-  const sprigColor =
-    tone === "bone" || tone === "ochre" ? "text-olive/30" : "text-bone/25";
+  const sprigColor = tone === "bone" ? "text-ink/20" : "text-cream/12";
 
   return (
     <div className={`relative overflow-hidden ${className}`} style={tones[tone]}>

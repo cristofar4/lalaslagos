@@ -7,10 +7,10 @@ function Group() {
     <div className="flex shrink-0 items-center" aria-hidden="true">
       {marquee.map((word) => (
         <span key={word} className="flex items-center">
-          <span className="px-8 font-display text-[clamp(2rem,5vw,4.5rem)] italic text-bone">
+          <span className="px-8 font-display text-[clamp(2rem,5vw,4.5rem)] italic text-cream">
             {word}
           </span>
-          <span className="text-[clamp(1rem,2vw,1.6rem)] text-ochre">✦</span>
+          <span className="text-[clamp(1rem,2vw,1.6rem)] text-lime">✦</span>
         </span>
       ))}
     </div>
@@ -45,7 +45,7 @@ export function Marquee() {
   );
 
   return (
-    <section className="border-y border-bone/10 bg-forest py-6 text-bone">
+    <section className="border-y border-line bg-ink-soft py-6">
       <div ref={wrap} className="edge-fade overflow-hidden">
         <div ref={track} className="flex w-max">
           <Group />

@@ -1,14 +1,14 @@
-/** Full-screen film-grain overlay for that warm, editorial print feel. */
+/** Full-screen film-grain overlay tuned for the dark canvas. */
 export function Grain() {
   return (
     <svg
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[70] h-full w-full opacity-[0.045] mix-blend-multiply"
+      className="pointer-events-none fixed inset-0 z-[75] h-full w-full opacity-[0.05] mix-blend-overlay"
     >
       <filter id="grain-noise">
         <feTurbulence
           type="fractalNoise"
-          baseFrequency="0.82"
+          baseFrequency="0.8"
           numOctaves="2"
           stitchTiles="stitch"
         />

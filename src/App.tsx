@@ -2,15 +2,19 @@ import { useRef, useState } from "react";
 import { useSmoothScroll } from "./lib/smoothScroll";
 import { gsap, useGSAP, ScrollTrigger } from "./lib/gsap";
 
+import { Cursor } from "./components/ui/Cursor";
+import { ScrollProgress } from "./components/ui/ScrollProgress";
 import { Grain } from "./components/ui/Grain";
 import { Preloader } from "./components/Preloader";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Marquee } from "./components/Marquee";
+import { Manifesto } from "./components/Manifesto";
+import { Showcase } from "./components/Showcase";
 import { Story } from "./components/Story";
 import { Menu } from "./components/Menu";
-import { Signatures } from "./components/Signatures";
 import { Patio } from "./components/Patio";
+import { Gallery } from "./components/Gallery";
 import { Visit } from "./components/Visit";
 import { Footer } from "./components/Footer";
 
@@ -52,16 +56,20 @@ export default function App() {
 
   return (
     <div ref={app}>
+      <Cursor />
+      <ScrollProgress />
       <Grain />
       <Preloader onComplete={() => setLoaded(true)} />
       <Navbar />
       <main>
         <Hero start={loaded} />
         <Marquee />
+        <Manifesto />
+        <Showcase />
         <Story />
         <Menu />
-        <Signatures />
         <Patio />
+        <Gallery />
         <Visit />
       </main>
       <Footer />
