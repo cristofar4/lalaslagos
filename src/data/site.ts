@@ -39,10 +39,17 @@ export const images = {
   map: img("1555396273-367ea4eb4db5", 1100),
 };
 
+export const heroVideo = {
+  // Replace `src` with the venue's own footage (mp4/webm). If it can't load,
+  // the poster image is shown instead — so the hero never looks broken.
+  src: "https://assets.mixkit.co/videos/preview/mixkit-set-of-dishes-with-food-on-a-table-44849-large.mp4",
+  poster: images.hero,
+};
+
 export const site = {
   name: "Lala's Bistro",
   shortName: "Lala's",
-  tagline: "Boho-chic resto-bar",
+  tagline: "Boho chic resto bar",
   location: "Victoria Island, Lagos",
   phone: "+234 915 025 1251",
   phoneHref: "tel:+2349150251251",
@@ -74,8 +81,8 @@ export const hero = {
   // Each line animates in independently.
   lines: ["Lala's", "Bistro"],
   lead:
-    "A boho-chic resto-bar tucked inside Lala's Lagos. Slow brunches, golden afternoons, candlelit dinners.",
-  tags: ["Brunch", "Resto-bar", "Garden Patio"],
+    "A boho chic resto bar tucked inside Lala's Lagos. Slow brunches, golden afternoons, candlelit dinners.",
+  tags: ["Brunch", "Resto bar", "Garden Patio"],
 };
 
 export const manifesto = {
@@ -101,7 +108,7 @@ export const marquee = [
   "Boho Chic",
   "Garden Patio",
   "Brunch & Dinner",
-  "Resto-Bar",
+  "Resto Bar",
   "Seasonal Plates",
   "Victoria Island",
   "Candlelight",
@@ -113,7 +120,7 @@ export const story = {
   heading: "Warm light, dark greenery, and a table that feels like home.",
   body: [
     "Tucked inside the Lala's Lagos boutique hotel, the bistro is the kind of room you settle into. Leafy corners, low candlelight and a patio that turns golden as the afternoon slips by.",
-    "Our kitchen wanders — from Lagos to Lisbon, Marrakech to Mexico City — plating seasonal, made-to-order dishes that pair as easily with a morning coffee as a midnight cocktail.",
+    "Our kitchen wanders — from Lagos to Lisbon, Marrakech to Mexico City — plating seasonal, made to order dishes that pair as easily with a morning coffee as a midnight cocktail.",
   ],
   stats: [
     { value: 4, suffix: "", label: "Services daily" },
@@ -141,7 +148,7 @@ export const menu: MenuCategory[] = [
       },
       {
         name: "Buttermilk Chicken Wings",
-        desc: "House dry-rub, smoked herb dip.",
+        desc: "House dry rub, smoked herb dip.",
         price: "₦7,000",
       },
       {
@@ -157,19 +164,19 @@ export const menu: MenuCategory[] = [
     note: "Plates that wander from Lagos to the Mediterranean.",
     items: [
       {
-        name: "Pan-Seared Barracuda Filet",
+        name: "Pan Seared Barracuda Filet",
         desc: "Citrus butter, seasonal greens, crushed potato.",
         price: "₦12,000",
         tag: "Chef's pick",
       },
       {
         name: "4 oz Sirloin Steak",
-        desc: "Green peppercorn jus, hand-cut fries.",
+        desc: "Green peppercorn jus, hand cut fries.",
         price: "₦12,000",
       },
       {
         name: "Smoky Jollof & Grilled Chicken",
-        desc: "Party jollof, suya-spiced chicken, fried plantain.",
+        desc: "Party jollof, suya spiced chicken, fried plantain.",
         price: "₦10,000",
       },
       {
@@ -191,7 +198,7 @@ export const menu: MenuCategory[] = [
     items: [
       {
         name: "Lala's Cinnamon Roll",
-        desc: "Warm, pull-apart, cream-cheese glaze.",
+        desc: "Warm, pull apart, cream cheese glaze.",
         price: "₦4,500",
         tag: "House favourite",
       },
@@ -239,7 +246,7 @@ export const menu: MenuCategory[] = [
 
 export const signatures: Dish[] = [
   {
-    name: "Pan-Seared Barracuda",
+    name: "Pan Seared Barracuda",
     kicker: "From the sea",
     desc: "Citrus butter, seasonal greens, crushed new potato.",
     tone: "forest",
@@ -248,14 +255,14 @@ export const signatures: Dish[] = [
   {
     name: "Smoky Jollof",
     kicker: "From Lagos",
-    desc: "Party jollof, suya-spiced chicken, sweet plantain.",
+    desc: "Party jollof, suya spiced chicken, sweet plantain.",
     tone: "clay",
     image: img("1546069901-ba9599a7e63c", 900),
   },
   {
     name: "Lala's Cinnamon Roll",
     kicker: "From the oven",
-    desc: "Warm, pull-apart, cream-cheese glaze.",
+    desc: "Warm, pull apart, cream cheese glaze.",
     tone: "ochre",
     image: img("1466978913421-dad2ebd01d17", 900),
   },
@@ -273,7 +280,7 @@ export const patio = {
   heading: "Boho chic, after dark.",
   body:
     "As the light drops, the patio glows — fairy lights threaded through greenery, low tables, slow conversation. It's the corner of Victoria Island that feels like a secret.",
-  caption: "Open-air seating · candlelit · best at golden hour",
+  caption: "Open air seating · candlelit · best at golden hour",
 };
 
 export const hours = [
@@ -286,5 +293,5 @@ export const visit = {
   eyebrow: "Visit",
   heading: "Find us on Sapara Williams.",
   body:
-    "Walk-ins are welcome, but the patio fills fast at golden hour — call ahead to reserve your corner.",
+    "Drop by any time, but the patio fills fast at golden hour, so call ahead to reserve your corner.",
 };

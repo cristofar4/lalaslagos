@@ -76,6 +76,10 @@ showcase, story, patio, gallery and visit panels. The image URLs live in the
 `images`, `signatures` and `gallery` entries in `site.ts` — swap the Unsplash ids
 (or paste full URLs) for the venue's own photos.
 
+The hero plays a **background video** (`heroVideo.src` in `site.ts`). Swap it for the
+restaurant's own footage; if the video can't load, the poster image (and an image
+layer behind it) is shown, so the hero never looks broken.
+
 Images render through a `SmartImg` / `ArtPanel` **graceful fallback**: if an image is
 missing or blocked, a noir/lime gradient shows instead of a broken-image icon — so
 the layout never breaks.

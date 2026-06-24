@@ -63,7 +63,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     >
       <div className="pl-fade absolute inset-x-0 top-0 flex justify-between px-6 py-6 text-[0.66rem] uppercase tracking-[0.28em] text-stone">
         <span>Lagos, NG</span>
-        <span>Boho-chic</span>
+        <span>Boho chic</span>
       </div>
 
       <h1 className="flex overflow-hidden font-display text-[20vw] leading-none italic md:text-[10vw]">

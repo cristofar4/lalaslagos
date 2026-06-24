@@ -12,7 +12,7 @@ export function Footer() {
           <div>
             <p className="font-display text-4xl italic">Lala's Bistro</p>
             <p className="mt-4 max-w-xs text-cream/65">
-              A boho-chic resto-bar tucked inside Lala's Lagos. {site.location}.
+              A boho chic resto bar tucked inside Lala's Lagos. {site.location}.
             </p>
             <a href={site.phoneHref} className="btn mt-7 inline-flex">
               Reserve a table

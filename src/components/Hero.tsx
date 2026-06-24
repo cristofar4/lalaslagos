@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { gallery, hero, site } from "../data/site";
+import { hero, heroVideo, site } from "../data/site";
 import { gsap, useGSAP, ScrollTrigger } from "../lib/gsap";
 import { scrollToSection } from "../lib/smoothScroll";
 import { Eyebrow } from "./ui/Eyebrow";
@@ -15,12 +15,10 @@ export function Hero({ start }: { start: boolean }) {
       if (!start) {
         gsap.set(".h-line span, .h-fade", { autoAlpha: 0 });
         gsap.set(".h-line span", { yPercent: 120 });
-        gsap.set(".h-strip-item", { clipPath: "inset(100% 0 0 0)" });
         return;
       }
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.set(".h-line span, .h-fade", { autoAlpha: 1, yPercent: 0 });
-        gsap.set(".h-strip-item", { clipPath: "inset(0% 0 0 0)" });
         return;
       }
       gsap
@@ -35,36 +33,22 @@ export function Hero({ start }: { start: boolean }) {
           ".h-fade",
           { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.1 },
           "-=0.85",
-        )
-        .to(
-          ".h-strip-item",
-          { clipPath: "inset(0% 0 0 0)", duration: 1.1, stagger: 0.1 },
-          "-=0.9",
         );
     },
     { scope: root, dependencies: [start] },
   );
 
-  // Parallax — always on.
+  // Parallax on the media layer.
   useGSAP(
     () => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      gsap.to(".h-ghost", {
-        yPercent: 30,
+      gsap.to(".h-media", {
+        yPercent: 12,
+        scale: 1.06,
         ease: "none",
         scrollTrigger: {
           trigger: root.current,
           start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(".h-strip-img", {
-        yPercent: -14,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".h-strip",
-          start: "top bottom",
           end: "bottom top",
           scrub: true,
         },
@@ -78,24 +62,43 @@ export function Hero({ start }: { start: boolean }) {
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink pt-28 text-cream"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink text-cream"
     >
-      {/* Oversized ghost word */}
-      <div
-        aria-hidden="true"
-        className="h-ghost pointer-events-none absolute inset-x-0 top-[20%] z-0 select-none text-center font-display text-[32vw] italic leading-none text-transparent"
-        style={{ WebkitTextStroke: "1px rgba(244,241,233,0.06)" }}
-      >
-        Bistro
+      {/* Background media: video over image fallback */}
+      <div className="h-media absolute inset-0 -z-10 scale-110">
+        <SmartImg
+          src={heroVideo.poster}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={heroVideo.poster}
+          preload="auto"
+        >
+          <source src={heroVideo.src} type="video/mp4" />
+        </video>
       </div>
 
-      <div className="container-x relative z-10 flex flex-1 flex-col justify-center">
+      {/* Legibility overlay */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(15,15,13,0.92) 0%, rgba(15,15,13,0.40) 48%, rgba(15,15,13,0.70) 100%)",
+        }}
+      />
+
+      <div className="container-x relative z-10 flex flex-1 flex-col justify-center pb-16 pt-32">
         <div className="flex items-start justify-between">
           <Eyebrow className="h-fade text-cream/80">{hero.eyebrow}</Eyebrow>
-          <div className="h-fade hidden text-right text-[0.7rem] uppercase leading-relaxed tracking-[0.22em] text-stone sm:block">
+          <div className="h-fade hidden text-right text-[0.7rem] uppercase leading-relaxed tracking-[0.22em] text-cream/60 sm:block">
             Open today
             <br />
-            8:00 — 23:00
+            8am till late
           </div>
         </div>
 
@@ -109,7 +112,7 @@ export function Hero({ start }: { start: boolean }) {
         </h1>
 
         <div className="mt-9 grid items-end gap-8 md:grid-cols-[1.5fr_1fr]">
-          <p className="h-fade max-w-xl text-pretty text-lg leading-relaxed text-cream/75">
+          <p className="h-fade max-w-xl text-pretty text-lg leading-relaxed text-cream/80">
             {hero.lead}
           </p>
           <div className="h-fade flex flex-col items-start gap-5 md:items-end">
@@ -117,7 +120,7 @@ export function Hero({ start }: { start: boolean }) {
               {hero.tags.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-cream/15 px-4 py-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-cream/70"
+                  className="rounded-full border border-cream/20 px-4 py-1.5 text-[0.68rem] uppercase tracking-[0.16em] text-cream/75"
                 >
                   {t}
                 </span>
@@ -135,25 +138,6 @@ export function Hero({ start }: { start: boolean }) {
               </MagneticButton>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Image strip */}
-      <div className="h-strip container-x relative z-10 pb-10 pt-12">
-        <div className="grid grid-cols-3 gap-2.5 sm:gap-3 md:grid-cols-4">
-          {gallery.slice(0, 4).map((src, i) => (
-            <div
-              key={src}
-              className={`h-strip-item overflow-hidden rounded-xl ${
-                i === 3 ? "hidden md:block" : ""
-              }`}
-            >
-              <SmartImg
-                src={src}
-                className="h-strip-img h-24 w-full scale-110 object-cover sm:h-32 md:h-44"
-              />
-            </div>
-          ))}
         </div>
       </div>
     </section>
