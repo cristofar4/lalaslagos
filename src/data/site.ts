@@ -40,10 +40,16 @@ export const images = {
 };
 
 export const heroVideo = {
-  // Replace `src` with the venue's own footage (mp4/webm). If it can't load,
-  // the poster image is shown instead — so the hero never looks broken.
-  src: "https://assets.mixkit.co/videos/preview/mixkit-set-of-dishes-with-food-on-a-table-44849-large.mp4",
   poster: images.hero,
+  // The browser plays the first source that loads. Drop the venue's own footage
+  // at `public/hero.mp4` and it wins automatically; the stock clip is a fallback.
+  sources: [
+    { src: "/hero.mp4", type: "video/mp4" },
+    {
+      src: "https://assets.mixkit.co/videos/preview/mixkit-set-of-dishes-with-food-on-a-table-44849-large.mp4",
+      type: "video/mp4",
+    },
+  ],
 };
 
 export const site = {

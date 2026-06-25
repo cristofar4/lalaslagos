@@ -65,7 +65,7 @@ export function Hero({ start }: { start: boolean }) {
       className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink text-cream"
     >
       {/* Background media: video over image fallback */}
-      <div className="h-media absolute inset-0 -z-10 scale-110">
+      <div className="h-media absolute inset-0 z-0 scale-110">
         <SmartImg
           src={heroVideo.poster}
           className="absolute inset-0 h-full w-full object-cover"
@@ -79,13 +79,15 @@ export function Hero({ start }: { start: boolean }) {
           poster={heroVideo.poster}
           preload="auto"
         >
-          <source src={heroVideo.src} type="video/mp4" />
+          {heroVideo.sources.map((s) => (
+            <source key={s.src} src={s.src} type={s.type} />
+          ))}
         </video>
       </div>
 
       {/* Legibility overlay */}
       <div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 z-0"
         style={{
           background:
             "linear-gradient(to top, rgba(15,15,13,0.92) 0%, rgba(15,15,13,0.40) 48%, rgba(15,15,13,0.70) 100%)",
