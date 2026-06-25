@@ -76,10 +76,11 @@ showcase, story, patio, gallery and visit panels. The image URLs live in the
 `images`, `signatures` and `gallery` entries in `site.ts` — swap the Unsplash ids
 (or paste full URLs) for the venue's own photos.
 
-The hero plays a **background video**. Drop the venue's own clip at `public/hero.mp4`
-and it plays automatically — it's the first entry in `heroVideo.sources` (`site.ts`),
-with a stock clip as fallback. If no source loads, the poster image (and an image
-layer behind it) is shown, so the hero never looks broken.
+The hero uses an **animated Canvas backdrop** (`HeroCanvas`) — drifting lime/cream
+"ember" sparks over a slow-moving glow on near-black, with zero external
+dependencies. It honors `prefers-reduced-motion`. To use real footage instead, swap
+`<HeroCanvas/>` in `Hero.tsx` for a `<video autoPlay muted loop playsInline>` and
+point it at a self-hosted clip in `public/`.
 
 Images render through a `SmartImg` / `ArtPanel` **graceful fallback**: if an image is
 missing or blocked, a noir/lime gradient shows instead of a broken-image icon — so

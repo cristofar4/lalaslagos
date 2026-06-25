@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import { hero, heroVideo, site } from "../data/site";
+import { hero, site } from "../data/site";
 import { gsap, useGSAP, ScrollTrigger } from "../lib/gsap";
 import { scrollToSection } from "../lib/smoothScroll";
 import { Eyebrow } from "./ui/Eyebrow";
 import { MagneticButton } from "./ui/MagneticButton";
-import { SmartImg } from "./ui/SmartImg";
+import { HeroCanvas } from "./ui/HeroCanvas";
 
 export function Hero({ start }: { start: boolean }) {
   const root = useRef<HTMLElement>(null);
@@ -44,7 +44,6 @@ export function Hero({ start }: { start: boolean }) {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       gsap.to(".h-media", {
         yPercent: 12,
-        scale: 1.06,
         ease: "none",
         scrollTrigger: {
           trigger: root.current,
@@ -64,25 +63,9 @@ export function Hero({ start }: { start: boolean }) {
       id="top"
       className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink text-cream"
     >
-      {/* Background media: video over image fallback */}
+      {/* Animated ember background */}
       <div className="h-media absolute inset-0 z-0 scale-110">
-        <SmartImg
-          src={heroVideo.poster}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={heroVideo.poster}
-          preload="auto"
-        >
-          {heroVideo.sources.map((s) => (
-            <source key={s.src} src={s.src} type={s.type} />
-          ))}
-        </video>
+        <HeroCanvas className="h-full w-full" />
       </div>
 
       {/* Legibility overlay */}
@@ -90,7 +73,7 @@ export function Hero({ start }: { start: boolean }) {
         className="absolute inset-0 z-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(15,15,13,0.92) 0%, rgba(15,15,13,0.40) 48%, rgba(15,15,13,0.70) 100%)",
+            "linear-gradient(to top, rgba(15,15,13,0.86) 0%, rgba(15,15,13,0.28) 50%, rgba(15,15,13,0.55) 100%)",
         }}
       />
 
