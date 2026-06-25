@@ -97,21 +97,15 @@ export function Navbar() {
               Reserve
             </a>
             <button
-              onClick={() => setOpen((v) => !v)}
-              className="relative z-[110] flex h-11 w-11 flex-col items-center justify-center gap-[6px] text-cream md:hidden"
-              aria-label="Toggle menu"
+              onClick={() => setOpen(true)}
+              className={`relative z-[110] flex h-11 w-11 flex-col items-center justify-center gap-[6px] text-cream transition-opacity duration-200 md:hidden ${
+                open ? "pointer-events-none opacity-0" : "opacity-100"
+              }`}
+              aria-label="Open menu"
               aria-expanded={open}
             >
-              <span
-                className={`h-px w-7 bg-current transition-all duration-300 ${
-                  open ? "translate-y-[3.5px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`h-px w-7 bg-current transition-all duration-300 ${
-                  open ? "-translate-y-[3.5px] -rotate-45" : ""
-                }`}
-              />
+              <span className="h-px w-7 bg-current" />
+              <span className="h-px w-7 bg-current" />
             </button>
           </div>
         </nav>
@@ -120,36 +114,61 @@ export function Navbar() {
       {/* Mobile overlay */}
       <div
         ref={overlay}
-        className="fixed inset-0 z-[100] hidden flex-col bg-ink px-6 pb-10 pt-28 text-cream"
+        className="fixed inset-0 z-[100] hidden flex-col bg-ink text-cream"
         style={{ clipPath: "inset(0 0 100% 0)" }}
       >
-        <ul className="mt-6 flex flex-col gap-2">
-          {nav.map((item, i) => (
-            <li key={item.target} className="overflow-hidden">
-              <button
-                onClick={() => go(item.target)}
-                className="m-link flex w-full items-baseline gap-4 border-b border-cream/10 py-4 text-left font-display text-4xl"
-              >
-                <span className="text-sm text-lime">0{i + 1}</span>
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center justify-between px-6 pt-5">
+          <span className="font-display text-2xl italic">Lala's</span>
+          <button
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="m-link flex h-11 w-11 items-center justify-center rounded-full border border-cream/25 text-cream transition-colors hover:bg-cream/10"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+            >
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
 
-        <div className="mt-auto flex flex-col gap-4">
-          <a href={site.phoneHref} className="btn m-link self-start">
-            Reserve a table
-          </a>
-          <p className="m-link text-sm text-stone">
-            {site.address.line1}, {site.address.line2}
-          </p>
-          <div className="m-link flex gap-5 text-sm text-cream/70">
-            {site.social.map((s) => (
-              <a key={s.handle} href={s.href} className="link-underline">
-                {s.handle}
-              </a>
+        <div
+          data-lenis-prevent
+          className="flex flex-1 flex-col overflow-y-auto px-6 pb-12 pt-8"
+        >
+          <ul className="flex flex-col gap-1">
+            {nav.map((item, i) => (
+              <li key={item.target} className="overflow-hidden">
+                <button
+                  onClick={() => go(item.target)}
+                  className="m-link flex w-full items-baseline gap-4 border-b border-cream/10 py-4 text-left font-display text-4xl"
+                >
+                  <span className="text-sm text-lime">0{i + 1}</span>
+                  {item.label}
+                </button>
+              </li>
             ))}
+          </ul>
+
+          <div className="mt-12 flex flex-col gap-4">
+            <a href={site.phoneHref} className="btn m-link self-start">
+              Reserve a table
+            </a>
+            <p className="m-link text-sm text-stone">
+              {site.address.line1}, {site.address.line2}
+            </p>
+            <div className="m-link flex gap-5 text-sm text-cream/70">
+              {site.social.map((s) => (
+                <a key={s.handle} href={s.href} className="link-underline">
+                  {s.handle}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

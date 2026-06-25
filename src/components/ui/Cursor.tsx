@@ -2,19 +2,23 @@ import { useRef, useState } from "react";
 import { gsap, useGSAP } from "../../lib/gsap";
 
 /**
- * Custom cursor: a small lime dot trailed by a ring that grows over
- * interactive elements and shows the `data-cursor` label when present.
- * Disabled on touch / coarse pointers and for reduced-motion.
+ * Custom cursor: a lime dot trailed by a ring that grows over interactive
+ * elements and shows the `data-cursor` label. Renders nothing at all on
+ * touch / coarse-pointer devices and for reduced-motion.
  */
 export function Cursor() {
   const dot = useRef<HTMLDivElement>(null);
   const ring = useRef<HTMLDivElement>(null);
   const [label, setLabel] = useState("");
+  const [enabled] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   useGSAP(() => {
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!fine || reduced) return;
+    if (!enabled) return;
 
     document.body.classList.add("cursor-none");
     gsap.set([dot.current, ring.current], {
@@ -81,17 +85,19 @@ export function Cursor() {
     };
   });
 
+  if (!enabled) return null;
+
   return (
     <>
       <div
         ref={ring}
-        className="pointer-events-none fixed left-0 top-0 z-[200] flex h-10 w-10 items-center justify-center rounded-full border border-lime/55 text-[0.5rem] font-semibold uppercase tracking-widest text-lime"
+        className="pointer-events-none fixed left-0 top-0 z-[200] flex h-10 w-10 items-center justify-center rounded-full border border-lime/55 text-[0.5rem] font-semibold uppercase tracking-widest text-lime opacity-0"
       >
         {label}
       </div>
       <div
         ref={dot}
-        className="pointer-events-none fixed left-0 top-0 z-[200] h-1.5 w-1.5 rounded-full bg-lime"
+        className="pointer-events-none fixed left-0 top-0 z-[200] h-1.5 w-1.5 rounded-full bg-lime opacity-0"
       />
     </>
   );
