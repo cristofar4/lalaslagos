@@ -111,13 +111,16 @@ export function Hero({ start }: { start: boolean }) {
                 </span>
               ))}
             </div>
-            <div className="flex flex-wrap gap-3">
-              <MagneticButton href={site.phoneHref} className="btn">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <MagneticButton
+                href={site.phoneHref}
+                className="btn w-full sm:w-auto"
+              >
                 Reserve a table
               </MagneticButton>
               <MagneticButton
                 onClick={() => scrollToSection("#menu")}
-                className="btn btn--ghost"
+                className="btn btn--ghost w-full sm:w-auto"
               >
                 View the menu
               </MagneticButton>

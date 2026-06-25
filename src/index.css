@@ -85,8 +85,9 @@ html.lenis body {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Reusable pieces                                                    */
+/*  Reusable pieces (in @layer so utilities can override them)         */
 /* ------------------------------------------------------------------ */
+@layer components {
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -233,4 +234,5 @@ html.lenis body {
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
 }

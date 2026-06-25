@@ -60,11 +60,20 @@ export function Visit() {
             </ContactRow>
           </div>
 
-          <div data-reveal className="mt-9 flex flex-wrap gap-3">
-            <MagneticButton href={site.phoneHref} className="btn">
+          <div
+            data-reveal
+            className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row"
+          >
+            <MagneticButton
+              href={site.phoneHref}
+              className="btn w-full sm:w-auto"
+            >
               Reserve a table
             </MagneticButton>
-            <MagneticButton href={site.mapHref} className="btn btn--ghost">
+            <MagneticButton
+              href={site.mapHref}
+              className="btn btn--ghost w-full sm:w-auto"
+            >
               Get directions
             </MagneticButton>
           </div>
